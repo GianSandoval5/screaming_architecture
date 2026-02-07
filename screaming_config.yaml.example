@@ -1,0 +1,74 @@
+# Screaming Architecture Configuration
+# Save this file as `screaming_config.yaml` in your project root
+
+# Base path where the structure will be generated
+base_path: lib
+
+# List of modules (features/domains) to generate
+modules:
+  - auth
+  - home
+  - profile
+  - products
+  - cart
+  - orders
+
+# Shared folder configuration
+shared:
+  enabled: true
+  folders:
+    - widgets
+    - utils
+    - extensions
+    - constants
+    - theme
+
+# Core folder configuration
+core:
+  enabled: true
+  folders:
+    - config
+    - di
+    - network
+    - errors
+    - routes
+
+# Module configuration
+module_defaults:
+  include_presentation: true
+  include_domain: true
+  include_data: true
+  include_routes: true
+  include_examples: true
+
+# Custom module configurations (override defaults)
+custom_modules:
+  settings:
+    include_presentation: true
+    include_domain: false
+    include_data: false
+    include_routes: true
+  
+  splash:
+    include_presentation: true
+    include_domain: false
+    include_data: false
+    include_routes: false
+
+# File generation options
+generation:
+  create_barrel_files: true
+  create_example_files: true
+  create_gitkeep: true
+  overwrite_existing: false
+
+# Naming conventions
+naming:
+  use_snake_case: true
+  module_suffix: "_module"
+  
+# Templates
+templates:
+  state_management: "bloc" # Options: bloc, riverpod, provider, getx, none
+  routing: "go_router" # Options: named_routes, go_router, auto_route, none
+  dependency_injection: "get_it" # Options: get_it, riverpod, none

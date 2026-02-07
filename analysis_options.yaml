@@ -1,0 +1,12 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+linter:
+  rules:
+    # Allow print statements in CLI tools
+    avoid_print: false
+    # Allow library names for packages
+    unnecessary_library_name: false
+    # Other rules from flutter_lints are still active

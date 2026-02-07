@@ -1,0 +1,25 @@
+name: screaming_architecture
+description: A Flutter package that generates project structure following Screaming Architecture pattern, where folder organization clearly communicates business domain and features.
+version: 1.0.0
+homepage: https://github.com/GianSandoval5/screaming_architecture
+repository: https://github.com/GianSandoval5/screaming_architecture
+issue_tracker: https://github.com/GianSandoval5/screaming_architecture/issues
+documentation: https://github.com/GianSandoval5/screaming_architecture#readme
+
+environment:
+  sdk: ^3.10.8
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  mocktail: ^1.0.0
+
+# Executable command line interface
+executables:
+  screaming_architecture:
