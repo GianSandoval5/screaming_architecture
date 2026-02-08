@@ -1,6 +1,6 @@
 name: screaming_architecture
 description: A Flutter package that generates project structure following Screaming Architecture pattern, where folder organization clearly communicates business domain and features.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/GianSandoval5/screaming_architecture
 repository: https://github.com/GianSandoval5/screaming_architecture
 issue_tracker: https://github.com/GianSandoval5/screaming_architecture/issues

@@ -5,6 +5,13 @@ Todos los cambios notables en este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/),
 y este proyecto adhiere a [Versionado Semántico](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-02-07
+
+### 🐛 Corrección
+
+- **Tests con imports correctos**: Los tests generados ahora usan el nombre del proyecto actual (leyendo `pubspec.yaml`) en lugar de `package:screaming_architecture/...`
+- Ejemplo: Si tu proyecto se llama `mi_app`, los imports serán `package:mi_app/...` en lugar de `package:screaming_architecture/...`
+
 ## [1.0.0] - 2026-02-07
 
 ### 🎉 Lanzamiento Inicial

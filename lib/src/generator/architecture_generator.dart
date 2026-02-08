@@ -267,13 +267,37 @@ class ArchitectureGenerator {
 
     print('  🧪 Generating tests for $moduleName');
 
+    // Get project name from pubspec.yaml
+    final projectName = await _getProjectName();
+
     final testPath = 'test/modules/$moduleName';
-    final tests = TestTemplates.getAllTests(moduleName);
+    final tests = TestTemplates.getAllTests(moduleName, projectName);
 
     for (final entry in tests.entries) {
       final filePath = '$testPath/${entry.key}';
       await _createDirectory(filePath.substring(0, filePath.lastIndexOf('/')));
       await _createFile(filePath, entry.value);
     }
+  }
+
+  /// Gets the project name from pubspec.yaml
+  Future<String> _getProjectName() async {
+    try {
+      final pubspecFile = File('pubspec.yaml');
+      if (await pubspecFile.exists()) {
+        final content = await pubspecFile.readAsString();
+        final nameMatch = RegExp(
+          r'^name:\s*(.+)$',
+          multiLine: true,
+        ).firstMatch(content);
+        if (nameMatch != null) {
+          return nameMatch.group(1)!.trim();
+        }
+      }
+    } catch (e) {
+      print('⚠️  Warning: Could not read project name from pubspec.yaml');
+    }
+    // Fallback to a generic name
+    return 'app';
   }
 }

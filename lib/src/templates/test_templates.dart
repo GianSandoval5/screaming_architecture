@@ -12,13 +12,13 @@ class TestTemplates {
   }
 
   // UseCase Test Template
-  static String usecaseTestTemplate(String moduleName) =>
+  static String usecaseTestTemplate(String moduleName, String projectName) =>
       '''
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/domain/entities/${moduleName}_entity.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/domain/repositories/${moduleName}_repository.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/domain/usecases/get_$moduleName.dart';
+import 'package:$projectName/modules/$moduleName/domain/entities/${moduleName}_entity.dart';
+import 'package:$projectName/modules/$moduleName/domain/repositories/${moduleName}_repository.dart';
+import 'package:$projectName/modules/$moduleName/domain/usecases/get_$moduleName.dart';
 
 class Mock${_pascalCase(moduleName)}Repository extends Mock implements ${_pascalCase(moduleName)}Repository {}
 
@@ -69,13 +69,16 @@ void main() {
 ''';
 
   // Repository Implementation Test Template
-  static String repositoryImplTestTemplate(String moduleName) =>
+  static String repositoryImplTestTemplate(
+    String moduleName,
+    String projectName,
+  ) =>
       '''
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/data/datasources/${moduleName}_remote_datasource.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/data/models/${moduleName}_model.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/data/repositories/${moduleName}_repository_impl.dart';
+import 'package:$projectName/modules/$moduleName/data/datasources/${moduleName}_remote_datasource.dart';
+import 'package:$projectName/modules/$moduleName/data/models/${moduleName}_model.dart';
+import 'package:$projectName/modules/$moduleName/data/repositories/${moduleName}_repository_impl.dart';
 
 class Mock${_pascalCase(moduleName)}RemoteDataSource extends Mock
     implements ${_pascalCase(moduleName)}RemoteDataSource {}
@@ -139,11 +142,11 @@ void main() {
 ''';
 
   // Widget Test Template
-  static String widgetTestTemplate(String moduleName) =>
+  static String widgetTestTemplate(String moduleName, String projectName) =>
       '''
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/presentation/pages/${moduleName}_page.dart';
+import 'package:$projectName/modules/$moduleName/presentation/pages/${moduleName}_page.dart';
 
 void main() {
   group('${_pascalCase(moduleName)}Page Widget Tests', () {
@@ -187,11 +190,11 @@ void main() {
 ''';
 
   // Model Test Template
-  static String modelTestTemplate(String moduleName) =>
+  static String modelTestTemplate(String moduleName, String projectName) =>
       '''
 import 'package:flutter_test/flutter_test.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/data/models/${moduleName}_model.dart';
-import 'package:screaming_architecture/src/modules/$moduleName/domain/entities/${moduleName}_entity.dart';
+import 'package:$projectName/modules/$moduleName/data/models/${moduleName}_model.dart';
+import 'package:$projectName/modules/$moduleName/domain/entities/${moduleName}_entity.dart';
 
 void main() {
   group('${_pascalCase(moduleName)}Model', () {
@@ -242,18 +245,24 @@ void main() {
 ''';
 
   /// Get all test templates for a module
-  static Map<String, String> getAllTests(String moduleName) {
+  static Map<String, String> getAllTests(
+    String moduleName,
+    String projectName,
+  ) {
     return {
       'domain/usecases/get_${moduleName}_test.dart': usecaseTestTemplate(
         moduleName,
+        projectName,
       ),
       'data/repositories/${moduleName}_repository_impl_test.dart':
-          repositoryImplTestTemplate(moduleName),
+          repositoryImplTestTemplate(moduleName, projectName),
       'data/models/${moduleName}_model_test.dart': modelTestTemplate(
         moduleName,
+        projectName,
       ),
       'presentation/pages/${moduleName}_page_test.dart': widgetTestTemplate(
         moduleName,
+        projectName,
       ),
     };
   }
