@@ -88,9 +88,15 @@ lib/
 
 Añade el package a tu proyecto:
 
+```bash
+flutter pub add screaming_architecture
+```
+
+O manualmente en `pubspec.yaml`:
+
 ```yaml
 dependencies:
-  screaming_architecture: ^1.0.0
+  screaming_architecture: ^1.0.2 # Usa la última versión disponible en pub.dev
 ```
 
 O instala globalmente para usar el CLI:
